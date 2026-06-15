@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+*.spec
+
+# Environments
+.env
+.venv/
+env/
+venv/
+
+# Data (large files — keep structure, not content)
+data/raw/*.csv
+data/processed/*.csv
+data/processed/*.joblib
+
+# Models (large — use MLflow or DVC for versioning)
+models/*.joblib
+models/*.pkl
+
+# MLflow
+mlruns/
+mlflow.db
+
+# Reports
+reports/monitoring_report.html
+reports/monitoring_summary.json
+
+# Notebooks checkpoints
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+
+# OS
+.DS_Store
+Thumbs.db

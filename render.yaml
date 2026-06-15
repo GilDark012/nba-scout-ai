@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: nba-scout-ai-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    envVars:
+      - key: API_HOST
+        value: 0.0.0.0
+      - key: API_PORT
+        value: 8000
+      - key: MODEL_PATH
+        value: models/best_model.joblib
+      - key: MLFLOW_TRACKING_URI
+        value: sqlite:///mlflow.db
+    healthCheckPath: /health
+    autoDeploy: true

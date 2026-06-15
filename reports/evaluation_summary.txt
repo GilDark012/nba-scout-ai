@@ -1,0 +1,23 @@
+
+NBA Scout AI — Model Evaluation Summary
+========================================
+Model type  : XGBClassifier
+Test samples: 196
+Accuracy    : 0.6582
+ROC-AUC     : 0.6894
+
+Classification Report:
+              precision    recall  f1-score   support
+
+      Missed       0.66      0.68      0.67       100
+        Made       0.66      0.64      0.65        96
+
+    accuracy                           0.66       196
+   macro avg       0.66      0.66      0.66       196
+weighted avg       0.66      0.66      0.66       196
+
+
+Interpretation:
+The model predicts whether an individual shot will be made or missed.
+ROC-AUC > 0.65 is considered meaningful for shot prediction given inherent variability.
+Feature importance highlights which spatial and situational factors most influence shot outcome.
