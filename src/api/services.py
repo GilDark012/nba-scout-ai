@@ -210,6 +210,11 @@ def predict_shot(request_data: dict) -> dict:
         "SHOT_ZONE_BASIC": encode_feature(request_data.get("shot_zone_basic", "Mid-Range"), "SHOT_ZONE_BASIC"),
         "SHOT_ZONE_AREA": encode_feature(request_data.get("shot_zone_area", "Center(C)"), "SHOT_ZONE_AREA"),
         "SHOT_ZONE_RANGE": encode_feature(request_data.get("shot_zone_range", "16-24 Ft."), "SHOT_ZONE_RANGE"),
+        "SHOT_CLOCK": request_data.get("shot_clock", 12.0),
+        "DRIBBLES": request_data.get("dribbles", 2.0),
+        "TOUCH_TIME": request_data.get("touch_time", 2.5),
+        "CLOSE_DEF_DIST": request_data.get("close_def_dist", 4.0),
+        # Rolling features — filled with dataset averages at inference time
         "ROLLING_FG_PCT": request_data.get("rolling_fg_pct", 0.45),
         "ROLLING_ATTEMPTS": request_data.get("rolling_attempts", 10.0),
         "ZONE_FG_PCT": request_data.get("zone_fg_pct", 0.45),

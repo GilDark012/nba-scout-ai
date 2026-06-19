@@ -22,6 +22,10 @@ class PredictRequest(BaseModel):
     shot_zone_range: str = Field(..., description="Shot zone range")
     action_type: str = Field(..., description="Shot action type (e.g. Jump Shot)")
     shot_type: str = Field(..., description="Shot type (2PT or 3PT)")
+    shot_clock: float = 12.0        # avg shot clock value
+    dribbles: float = 2.0           # avg dribbles before shot
+    touch_time: float = 2.5         # avg touch time in seconds
+    close_def_dist: float = 4.0     # avg closest defender distance (feet)
     rolling_fg_pct: Optional[float] = Field(0.45, description="Recent rolling FG%")
     rolling_attempts: Optional[float] = Field(10.0, description="Recent rolling attempts")
     zone_fg_pct: Optional[float] = Field(0.45, description="Historical zone FG%")
