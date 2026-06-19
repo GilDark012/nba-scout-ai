@@ -42,3 +42,4 @@ reports/monitoring_summary.json
 # OS
 .DS_Store
 Thumbs.db
+.streamlit/secrets.toml
