@@ -10,7 +10,7 @@ import os
 from pathlib import Path
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse,RedirectResponse
 from dotenv import load_dotenv
 
 from src.api.schemas import (
@@ -35,15 +35,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.get("/", tags=["Root"])
+@app.get("/", include_in_schema=False)
 def root():
-    return {
-        "service": "NBA Scout AI",
-        "version": "1.0.0",
-        "status": "running",
-        "docs": "/docs",
-        "health": "/health",
-    }
+    return RedirectResponse(url="/docs")
 
 @app.get("/health", tags=["System"])
 def health_check():

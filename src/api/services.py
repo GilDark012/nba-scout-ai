@@ -185,6 +185,27 @@ def encode_feature(value: str, col: str) -> int:
     except ValueError:
         return 0
 
+FEATURE_ORDER = [
+    "SHOT_DISTANCE",
+    "LOC_X",
+    "LOC_Y",
+    "PERIOD",
+    "TIME_REMAINING_SECS",
+    "IS_THREE_POINTER",
+    "IS_HOME",
+    "SHOT_CLOCK",
+    "DRIBBLES",
+    "TOUCH_TIME",
+    "CLOSE_DEF_DIST",
+    "ACTION_TYPE",
+    "SHOT_TYPE",
+    "SHOT_ZONE_BASIC",
+    "SHOT_ZONE_AREA",
+    "SHOT_ZONE_RANGE",
+    "ROLLING_FG_PCT",
+    "ROLLING_ATTEMPTS",
+    "ZONE_FG_PCT",
+]
 
 def predict_shot(request_data: dict) -> dict:
     """
@@ -219,7 +240,9 @@ def predict_shot(request_data: dict) -> dict:
         "ROLLING_ATTEMPTS": request_data.get("rolling_attempts", 10.0),
         "ZONE_FG_PCT": request_data.get("zone_fg_pct", 0.45),
     }
+
     df_input = pd.DataFrame([row])
+    df_input = df_input[FEATURE_ORDER]
     prob = model.predict_proba(df_input)[0][1]
     predicted = "Made" if prob >= 0.5 else "Missed"
     confidence = "High" if abs(prob - 0.5) > 0.2 else "Moderate" if abs(prob - 0.5) > 0.1 else "Low"
