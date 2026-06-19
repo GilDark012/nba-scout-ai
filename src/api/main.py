@@ -35,6 +35,15 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.get("/", tags=["Root"])
+def root():
+    return {
+        "service": "NBA Scout AI",
+        "version": "1.0.0",
+        "status": "running",
+        "docs": "/docs",
+        "health": "/health",
+    }
 
 @app.get("/health", tags=["System"])
 def health_check():
