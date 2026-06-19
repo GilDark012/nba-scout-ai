@@ -20,6 +20,8 @@ NBA Scout AI is a basketball scouting product for **coaches, scouts, journalists
 ---
 
 ## 🏗️ Architecture
+
+```bash
 User (Streamlit Dashboard)
 │
 ▼
@@ -29,11 +31,12 @@ FastAPI Backend (REST API)
 ├── XGBoost Model (joblib)
 ├── MLflow experiment tracking
 └── Evidently AI monitoring
+```
 
----
 
 ## 📁 Project Structure
 
+```bash
 nba-scout-ai/
 ├── data/ # Raw and processed shot data
 ├── src/
@@ -47,9 +50,9 @@ nba-scout-ai/
 ├── Dockerfile # Backend container
 ├── render.yaml # Render deployment config
 └── requirements.txt # Pinned dependencies
+```
 
 
----
 
 ## ⚡ Local Setup
 
@@ -69,7 +72,7 @@ pip install -r requirements.txt
 cp .env.example .env
 ```
 
----
+
 
 ## 🚀 Run the Full Pipeline
 
@@ -93,7 +96,7 @@ python src/pipeline/evaluate.py
 python src/monitoring/monitor.py
 ```
 
----
+
 
 ## 🌐 Run Locally
 
@@ -114,7 +117,7 @@ mlflow ui --backend-store-uri sqlite:///mlflow.db --port 5000
 | FastAPI Docs | http://localhost:8000/docs |
 | MLflow UI | http://localhost:5000 |
 
----
+
 
 ## 🐳 Docker
 
@@ -160,19 +163,7 @@ pytest tests/ -v
 
 > *(Add screenshots of the Streamlit dashboard tabs here)*
 
----
 
-## 💼 CV-Ready Highlights
-
-- **End-to-end ML pipeline**: data ingestion → preprocessing → feature engineering → training → evaluation
-- **Binary classification** with XGBoost and Logistic Regression baseline; tracked with **MLflow**
-- **Production REST API** with FastAPI, Pydantic validation, CORS, and automatic OpenAPI docs
-- **Model monitoring** with **Evidently AI**: data drift detection and performance tracking
-- **Non-technical product UI** with Streamlit and Plotly — scouting dashboard for coaches and fans
-- **Dockerised backend** deployed on **Render** with health checks and CI/CD via **GitHub Actions**
-- **Reproducible environment** with conda, pinned `requirements.txt`, and `.env` config
-
----
 
 ## 📊 Dataset
 
